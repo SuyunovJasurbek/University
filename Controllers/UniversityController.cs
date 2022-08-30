@@ -47,7 +47,7 @@ public partial class UniversityController :ControllerBase
    [Route("{id}")]
    public async Task<IActionResult> GetId ( Guid id)
    {
-     return Ok(_context.universeties.FirstOrDefault(s=>s.Id==id));
+     return Ok(_context.universeties.FirstOrDefault(g=>g.Id==id));
    }
 
 }
