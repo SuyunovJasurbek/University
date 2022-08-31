@@ -21,6 +21,7 @@ public partial class UniversityController :ControllerBase
         _universityService=universityService;
         _context =context;
     }
+
   
    [HttpPost]
    public async Task<IActionResult> PostUniversity ([FromBody]Dtos.University dto )
@@ -33,41 +34,31 @@ public partial class UniversityController :ControllerBase
 
      return CreatedAtAction(nameof(PostUniversity), dto);
     //return Ok();
-   }
-
-
-   [HttpGet]
-
-   public async Task<IActionResult> Get()
-   {
-     return Ok(_context.universeties.ToListAsync());
-   }
-
+   } 
 
 
    [HttpGet]
    [Route("{id}")]
-   public async Task<IActionResult> GetIdSearch ( Guid id)
+   public async Task<IActionResult> GetIdSearch ([FromBody] Guid id)
    {
       var getId=_universityService.GetId(id);
       return Ok(getId); 
    }
 
+   [HttpDelete]
+   [Route("{Id}")]
+   public async Task<IActionResult> DeleteId(Guid Id)
+   {
+      var deleteId =_universityService.DeleteID;
+      return Ok(deleteId);
+   }
+   [HttpGet]
+   public async Task<IActionResult> Get ()
+   {
+    _context.universeties.ToListAsync();
+    return Ok();
 
-
-
-
-
-
-
-
-  //  [HttpDelete]
-  //  [Route("[delete]")]
-
-  //  public async Task<IActionResult> DeleteId(Guid Id)
-  //  {
-      
-  //  }
+   }
 
 
 }

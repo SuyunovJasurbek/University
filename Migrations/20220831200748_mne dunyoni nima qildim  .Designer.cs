@@ -11,8 +11,8 @@ using WebApi.Data;
 namespace WebApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220831144953_uzgardi  ")]
-    partial class uzgardi
+    [Migration("20220831200748_mne dunyoni nima qildim  ")]
+    partial class mnedunyoninimaqildim
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

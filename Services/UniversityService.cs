@@ -6,7 +6,6 @@ public partial class UniversityService : IUniversityService
 {
     private ILogger<UniversityService> _logger;
     private IUniversityRepository _universityRepository;
-
     public UniversityService(ILogger <UniversityService> logger ,
     IUniversityRepository universityRepository )
     {
@@ -32,15 +31,22 @@ public partial class UniversityService : IUniversityService
         return ToModel(nimadir);
     }
 
-    public ValueTask<University> DeleteID(Guid id)
-    {
-        throw new NotImplementedException();
-    }
 
+    public async ValueTask<University> DeleteID(Guid id)
+    {
+        var deleteID = _universityRepository.GetById(id);
+        var delet= _universityRepository.Delete(deleteID);
+        return new ();
+    }
     public ValueTask<University> GetId(Guid id)
     {
         var IdSearch = _universityRepository.GetAll().FirstOrDefault(t=>t.Id==id);
         return  new (ToModel(IdSearch));
+    }
+
+        public ValueTask<University> Get()
+    {
+        throw new NotImplementedException();
     }
 
     

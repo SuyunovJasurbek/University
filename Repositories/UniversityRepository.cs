@@ -33,5 +33,11 @@ public class UniversityRepository : IUniversityRepository
        var getAl =_context.Set<University>();
        return getAl;
     }
+
+    public University GetById(Guid Id)
+    {
+       var getId=_context.Set<University>().Find();
+       return getId;
+    }
 }
 
