@@ -1,11 +1,11 @@
-﻿          using System;
+﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace WebApi.Migrations
 {
-    public partial class Universety_Tablitse : Migration
+    public partial class universetdfsry : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

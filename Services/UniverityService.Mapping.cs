@@ -9,11 +9,11 @@ public partial class UniversityService
    {
     var modelgo = new Models.University ()
     {
+        Id=entity.Id,
         Name=entity.Name,
         AccountNumber=entity.AccountNumber,
         Adres=entity.Adres,
         Email=entity.Email,
-        Id=entity.Id,
         Rooms=entity.Rooms
     };
     return modelgo;

@@ -5,5 +5,6 @@ namespace WebApi.Services;
 public interface IUniversityService
 {
     ValueTask<University> CreateUniversity (Models.University model);
-    ValueTask<University> Deleteuniversety (Models.University remove);
+    ValueTask<University> DeleteID (Guid id );
+    ValueTask<University> GetId(Guid id );
 }

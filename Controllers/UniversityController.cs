@@ -43,11 +43,31 @@ public partial class UniversityController :ControllerBase
      return Ok(_context.universeties.ToListAsync());
    }
 
+
+
    [HttpGet]
    [Route("{id}")]
-   public async Task<IActionResult> GetId ( Guid id)
+   public async Task<IActionResult> GetIdSearch ( Guid id)
    {
-     return Ok(_context.universeties.FirstOrDefault(g=>g.Id==id));
+      var getId=_universityService.GetId(id);
+      return Ok(getId); 
    }
+
+
+
+
+
+
+
+
+
+  //  [HttpDelete]
+  //  [Route("[delete]")]
+
+  //  public async Task<IActionResult> DeleteId(Guid Id)
+  //  {
+      
+  //  }
+
 
 }

@@ -31,9 +31,19 @@ public partial class UniversityService : IUniversityService
         
         return ToModel(nimadir);
     }
-// chala
-    public ValueTask<University> Deleteuniversety(University remove)
+
+    public ValueTask<University> DeleteID(Guid id)
     {
         throw new NotImplementedException();
     }
+
+    public ValueTask<University> GetId(Guid id)
+    {
+        var IdSearch = _universityRepository.GetAll().FirstOrDefault(t=>t.Id==id);
+        return  new (ToModel(IdSearch));
+    }
+
+    
+    // chala
+
 }

@@ -11,8 +11,8 @@ using WebApi.Data;
 namespace WebApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220829220522_Ok")]
-    partial class Ok
+    [Migration("20220831143747_universetdfsry")]
+    partial class universetdfsry
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

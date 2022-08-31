@@ -19,11 +19,19 @@ public class UniversityRepository : IUniversityRepository
        return bla.Entity;
     }
     
+
+    
     public async ValueTask<University> Delete(University delete)
     {
          var deletentry=_context.universeties.Remove(delete);      
          await _context.SaveChangesAsync();
          return deletentry.Entity;
+    }
+
+    public IQueryable<University> GetAll()
+    {
+       var getAl =_context.Set<University>();
+       return getAl;
     }
 }
 
