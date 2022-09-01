@@ -8,6 +8,5 @@ public class University
     public string? Name { get; set; }
     public string? Adres { get; set; }
     public string? Category { get; set; }
-    
     public ulong AccountNumber { get; set; }
 }

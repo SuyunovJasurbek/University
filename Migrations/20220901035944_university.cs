@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebApi.Migrations
 {
-    public partial class mnedunyoninimaqildim : Migration
+    public partial class university : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

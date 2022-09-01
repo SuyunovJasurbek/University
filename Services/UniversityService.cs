@@ -31,7 +31,6 @@ public partial class UniversityService : IUniversityService
         return ToModel(nimadir);
     }
 
-
     public async ValueTask<University> DeleteID(Guid id)
     {
         var deleteID = _universityRepository.GetById(id);
@@ -49,7 +48,6 @@ public partial class UniversityService : IUniversityService
         throw new NotImplementedException();
     }
 
-    
     // chala
 
 }

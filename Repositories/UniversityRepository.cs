@@ -14,9 +14,9 @@ public class UniversityRepository : IUniversityRepository
 
     public async ValueTask<University> Create(University entity)
     { 
-       var bla = _context.universeties.Add(entity);
+       var create = _context.universeties.Add(entity);
        await _context.SaveChangesAsync();   
-       return bla.Entity;
+       return create.Entity;
     }
     
 

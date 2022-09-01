@@ -30,6 +30,7 @@ public partial class UniversityController :ControllerBase
     {
       return BadRequest(dto);
     }
+
      var createUniversityResult = await _universityService.CreateUniversity(ToModel(dto)); 
 
      return CreatedAtAction(nameof(PostUniversity), dto);
@@ -42,7 +43,7 @@ public partial class UniversityController :ControllerBase
    public async Task<IActionResult> GetIdSearch ([FromBody] Guid id)
    {
       var getId=_universityService.GetId(id);
-      return Ok(getId); 
+      return Ok(); 
    }
 
    [HttpDelete]
@@ -55,9 +56,8 @@ public partial class UniversityController :ControllerBase
    [HttpGet]
    public async Task<IActionResult> Get ()
    {
-    _context.universeties.ToListAsync();
-    return Ok();
-
+    var alo  =  _context.universeties.ToListAsync();
+    return Ok(alo);
    }
 
 

@@ -1,3 +1,4 @@
+using System.Xml;
 namespace WebApi.Controllers;
 
 public partial class UniversityController
@@ -7,6 +8,7 @@ public partial class UniversityController
    {
      var model =  new Models.University()
      {
+       Id=Guid.NewGuid(),
        Rooms=dtos.Rooms,
        Name=dtos.Name,
        Adres=dtos.Adres,

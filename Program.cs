@@ -11,8 +11,7 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlite(builder
 
 builder.Services.AddTransient<IUniversityRepository, UniversityRepository>();
 builder.Services.AddTransient<IUniversityService, UniversityService>();
-var app = builder.Build();
-
+var app = builder.Build(); 
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
