@@ -11,8 +11,8 @@ using WebApi.Data;
 namespace WebApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220901035944_university")]
-    partial class university
+    [Migration("20220902173933_ trularni_false_qildim")]
+    partial class trularni_false_qildim
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,28 +21,34 @@ namespace WebApi.Migrations
 
             modelBuilder.Entity("WebApi.Entities.University", b =>
                 {
-                    b.Property<Guid?>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
                     b.Property<ulong>("AccountNumber")
+                        .HasMaxLength(20)
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Adres")
+                        .IsRequired()
+                        .HasMaxLength(40)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Category")
                         .IsRequired()
+                        .HasMaxLength(25)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
+                        .HasMaxLength(25)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
-                        .IsRequired()
+                        .HasMaxLength(20)
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Rooms")
+                        .HasMaxLength(20)
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");

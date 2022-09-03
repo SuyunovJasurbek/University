@@ -18,4 +18,6 @@ public partial class UniversityService
     };
     return modelgo;
    }
+
+   
 }

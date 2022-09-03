@@ -1,6 +1,4 @@
-using System.Runtime.CompilerServices;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using WebApi.Data;
 using WebApi.Services;
 
@@ -13,11 +11,9 @@ public partial class UniversityController :ControllerBase
     private readonly IUniversityService _universityService;
     private readonly AppDbContext _context;
     public UniversityController(
-    ILogger<UniversityController> logger ,
     IUniversityService universityService,
     AppDbContext context)
     {
-        _logger =logger;
         _universityService=universityService;
         _context =context;
     }
@@ -25,16 +21,14 @@ public partial class UniversityController :ControllerBase
   
    [HttpPost]
    public async Task<IActionResult> PostUniversity ([FromBody]Dtos.University dto )
-   {
+   {    
     if(!ModelState.IsValid)
     {
       return BadRequest(dto);
     }
 
      var createUniversityResult = await _universityService.CreateUniversity(ToModel(dto)); 
-
      return CreatedAtAction(nameof(PostUniversity), dto);
-    //return Ok();
    } 
 
 
@@ -42,23 +36,33 @@ public partial class UniversityController :ControllerBase
    [Route("{id}")]
    public async Task<IActionResult> GetIdSearch ([FromBody] Guid id)
    {
+      if(!ModelState.IsValid)
+      {
+         return BadRequest(id);
+      }
+   
       var getId=_universityService.GetId(id);
-      return Ok(); 
+      return Ok((getId)); 
    }
+
 
    [HttpDelete]
    [Route("{Id}")]
    public async Task<IActionResult> DeleteId(Guid Id)
    {
-      var deleteId =_universityService.DeleteID;
-      return Ok(deleteId);
+      if(!ModelState.IsValid)
+      {
+         return BadRequest(Id);
+      }
+      var deleteId =_universityService.DeleteID(Id);
+      return Ok();
    }
+
+
    [HttpGet]
-   public async Task<IActionResult> Get ()
+   public async Task<IActionResult> GetAll ()
    {
-    var alo  =  _context.universeties.ToListAsync();
-    return Ok(alo);
+    var get = _universityService.Get();
+    return Ok(get);
    }
-
-
 }

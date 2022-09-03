@@ -15,7 +15,34 @@ public partial class UniversityService : IUniversityService
 
 
     public  async ValueTask<University> CreateUniversity(Models.University model)
-    { // uzgarib kelgan model dan Data ga joylash uchun entityga ugirish
+    {
+        // uzgarib kelgan model dan Data ga joylash uchun entityga ugirish
+        var nimadir = await _universityRepository.Create(ToEntity(model));   
+        return ToModel(nimadir);
+    }
+
+    public async ValueTask<University> DeleteID(Guid id)
+    {
+        var deleteID =  _universityRepository.GetById(id);
+        var delet=  await _universityRepository.Delete(deleteID);
+        return ToModel(delet);
+    }
+
+
+    public async ValueTask<IEnumerable<University>> Get()
+    {
+        var getal =  _universityRepository.GetAll();
+        return  getal.Select(ToModel);
+    }
+
+
+    public async  ValueTask<University> GetId(Guid id)
+    {
+        var IdSearch =  _universityRepository.GetAll().FirstOrDefault(t=>t.Id==id);
+        return ToModel(IdSearch);
+    }
+    private static Entities.University ToEntity(Models.University model)
+    {
         var entity = new Entities.University()
         {
           Id=model.Id,
@@ -24,30 +51,10 @@ public partial class UniversityService : IUniversityService
           AccountNumber=model.AccountNumber,
           Name=model.Name,
           Category=model.Category,
+          Email=model.Email
         };
-
-        var nimadir = await _universityRepository.Create(entity);
-        
-        return ToModel(nimadir);
+        return entity;
     }
 
-    public async ValueTask<University> DeleteID(Guid id)
-    {
-        var deleteID = _universityRepository.GetById(id);
-        var delet= _universityRepository.Delete(deleteID);
-        return new ();
-    }
-    public ValueTask<University> GetId(Guid id)
-    {
-        var IdSearch = _universityRepository.GetAll().FirstOrDefault(t=>t.Id==id);
-        return  new (ToModel(IdSearch));
-    }
-
-        public ValueTask<University> Get()
-    {
-        throw new NotImplementedException();
-    }
-
-    // chala
 
 }

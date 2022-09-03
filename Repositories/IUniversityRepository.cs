@@ -1,11 +1,14 @@
+using System.Linq.Expressions;
 using WebApi.Entities;
 
 namespace WebApi.Repositories;
 
 public  interface IUniversityRepository
 {
+     University GetById (Guid Id);
      ValueTask<University> Create(Entities.University entity) ;
      ValueTask<University> Delete (Entities.University delete);
-     IQueryable<University> GetAll (); 
-     University GetById (Guid Id);
+     IEnumerable<University> GetAll (); 
+   
+   //  IEnumerable<University> Find(Expression<University> nimadir );
 }
