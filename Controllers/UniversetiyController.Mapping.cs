@@ -1,4 +1,7 @@
+using System.Reflection;
 using System.Xml;
+using WebApi.Dtos;
+
 namespace WebApi.Controllers;
 
 public partial class UniversityController
@@ -28,6 +31,13 @@ public partial class UniversityController
       Adres=model.Adres,
       Email=model.Email,
       AccountNumber=model.AccountNumber,
+      Category=model.Category.ToString() switch
+      {
+        "Business"=>ECategory.Business,
+        "ExactSciences"=>ECategory.ExactSciences,
+        "Medicine"=>ECategory.Medicine,
+        "Programming"=>ECategory.Programming
+      }
     };
     return dtos;
    }

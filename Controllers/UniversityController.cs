@@ -42,27 +42,27 @@ public partial class UniversityController :ControllerBase
       }
    
       var getId=_universityService.GetId(id);
-      return Ok((getId)); 
+      return Ok(ToDtos(getId.Result)); 
    }
 
 
    [HttpDelete]
    [Route("{Id}")]
-   public async Task<IActionResult> DeleteId(Guid Id)
+   public async Task<IActionResult> DeleteId([FromBody]Guid Id)
    {
       if(!ModelState.IsValid)
       {
          return BadRequest(Id);
       }
       var deleteId =_universityService.DeleteID(Id);
-      return Ok();
+      return Ok(deleteId.Result);
    }
 
 
    [HttpGet]
-   public async Task<IActionResult> GetAll ()
+   public async Task<IActionResult> GetAll()
    {
     var get = _universityService.Get();
-    return Ok(get);
+    return Ok(get.Result);
    }
 }
