@@ -11,6 +11,7 @@ public class University
     [Required]
     public string? Adres { get; set; }
     [Required]
+    [EmailAddress]
     public string?  Email { get; set; }
     [Required]
     public ECategory Category { get; set; }

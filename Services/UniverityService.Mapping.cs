@@ -3,8 +3,7 @@ namespace WebApi.Services;
 
 public partial class UniversityService 
 {
-
- //entitiydan modelga utish
+  //entitiydan modelga utish
    public static Models.University ToModel(Entities.University entity)
    {
     var modelgo = new Models.University ()
@@ -19,7 +18,7 @@ public partial class UniversityService
     };
     return modelgo;
    }
- //modeldan entityga utish 
+  //modeldan entityga utish 
      public static Entities.University ToEntity(Models.University model)
     {
         var entity = new Entities.University()
@@ -34,5 +33,4 @@ public partial class UniversityService
         };
         return entity;
     }
-
 }

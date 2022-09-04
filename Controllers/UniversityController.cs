@@ -11,13 +11,11 @@ public partial class UniversityController :ControllerBase
     private readonly IUniversityService _universityService;
     private readonly AppDbContext _context;
     public UniversityController(
-    IUniversityService universityService,
-    AppDbContext context)
+    IUniversityService universityService)
     {
         _universityService=universityService;
-        _context =context;
     }
-    
+
   [HttpGet]
    public async Task<IActionResult> GetAll()
    {
