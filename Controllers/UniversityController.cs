@@ -17,7 +17,18 @@ public partial class UniversityController :ControllerBase
         _universityService=universityService;
         _context =context;
     }
-
+    
+  [HttpGet]
+   public async Task<IActionResult> GetAll()
+   {
+      if(!ModelState.IsValid)
+      {
+         return BadRequest();
+      }
+      
+    var get = await _universityService.Get();
+    return Ok(get.Select(ToDtos));
+   }
   
    [HttpPost]
    public async Task<IActionResult> PostUniversity ([FromBody]Dtos.University dto )
@@ -34,15 +45,15 @@ public partial class UniversityController :ControllerBase
 
    [HttpGet]
    [Route("{id}")]
-   public async Task<IActionResult> GetIdSearch ([FromBody] Guid id)
+   public async Task<IActionResult> GetIdSearch ([FromRoute] Guid id)
    {
       if(!ModelState.IsValid)
       {
          return BadRequest(id);
       }
    
-      var getId=_universityService.GetId(id);
-      return Ok(ToDtos(getId.Result)); 
+      var getId= await _universityService.GetId(id);
+      return Ok(ToDtos(getId)); 
    }
 
 
@@ -54,15 +65,8 @@ public partial class UniversityController :ControllerBase
       {
          return BadRequest(Id);
       }
-      var deleteId =_universityService.DeleteID(Id);
-      return Ok(deleteId.Result);
-   }
 
-
-   [HttpGet]
-   public async Task<IActionResult> GetAll()
-   {
-    var get = _universityService.Get();
-    return Ok(get.Result);
+      var deleteId = await _universityService.DeleteID(Id);
+      return Ok(ToDtos(deleteId));
    }
 }

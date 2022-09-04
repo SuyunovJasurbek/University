@@ -35,26 +35,11 @@ public partial class UniversityService : IUniversityService
         return  getal.Select(ToModel);
     }
 
-
     public async  ValueTask<University> GetId(Guid id)
-    {
+    {       
         var IdSearch =  _universityRepository.GetAll().FirstOrDefault(t=>t.Id==id);
         return ToModel(IdSearch);
     }
-    private static Entities.University ToEntity(Models.University model)
-    {
-        var entity = new Entities.University()
-        {
-          Id=model.Id,
-          Rooms=model.Rooms,
-          Adres=model.Adres,
-          AccountNumber=model.AccountNumber,
-          Name=model.Name,
-          Category=model.Category,
-          Email=model.Email
-        };
-        return entity;
-    }
-
+  
 
 }

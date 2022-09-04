@@ -27,7 +27,8 @@ public class UniversityRepository : IUniversityRepository
        await _context.SaveChangesAsync();   
        return create.Entity;
     }
-    
+
+
     public async ValueTask<University> Delete(University delete)
     {
         var uchirish  = _context.universeties.Remove(delete);

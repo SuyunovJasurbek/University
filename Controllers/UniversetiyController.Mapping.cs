@@ -22,7 +22,8 @@ public partial class UniversityController
      return model;
    }
 
-   public static Dtos.University ToDtos( Models.University model )
+  //model dan dtosga utish
+   public static  Dtos.University ToDtos( Models.University model )
    {
     var dtos = new Dtos.University ()
     {
@@ -31,12 +32,12 @@ public partial class UniversityController
       Adres=model.Adres,
       Email=model.Email,
       AccountNumber=model.AccountNumber,
-      Category=model.Category.ToString() switch
+      Category=model.Category switch
       {
         "Business"=>ECategory.Business,
-        "ExactSciences"=>ECategory.ExactSciences,
-        "Medicine"=>ECategory.Medicine,
-        "Programming"=>ECategory.Programming
+        "ExactSciences"=>ECategory.Medicine,
+        "Programming"=>ECategory.Programming,
+         _ => ECategory.ExactSciences
       }
     };
     return dtos;

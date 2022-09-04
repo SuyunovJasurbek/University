@@ -8,7 +8,5 @@ public  interface IUniversityRepository
      University GetById (Guid Id);
      ValueTask<University> Create(Entities.University entity) ;
      ValueTask<University> Delete (Entities.University delete);
-     IEnumerable<University> GetAll (); 
-   
-   //  IEnumerable<University> Find(Expression<University> nimadir );
+     IEnumerable<University> GetAll ();
 }
